@@ -1,0 +1,8 @@
+setwd("D://COURSERA//DATA_SCIENCE//4.Exploratory_Data_Analysis/Project and Assignments")
+completedata <- read.table("household_power_consumption.txt", sep = ";", header=TRUE, colClasses=c("character", "character", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric"),na.strings="?")
+mydata <- subset(completedata,Date == "1/2/2007" | Date == "2/2/2007")
+tmpdatetime <- paste(mydata[,1],mydata[,2])
+datetime <- strptime(tmpdatetime,tz="",format="%d/%m/%Y %H:%M:%S")
+png("plot2.png",height=480,width=480)
+plot(datetime,mydata$Global_active_power, type="l", xlab="", ylab="Global Active Power (kilowatts)")
+dev.off()
